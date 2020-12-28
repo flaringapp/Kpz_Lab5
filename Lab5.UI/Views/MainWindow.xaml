@@ -73,7 +73,7 @@
             Grid.Column="1"
             VerticalAlignment="Stretch"
             Margin="10"
-            MaxWidth="100">
+            MaxWidth="150">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -98,29 +98,31 @@
                     Orientation="Vertical">
 
                     <Button
+                        HorizontalAlignment="Stretch"
                         Command="{ Binding OnAddClicked }">
 
                         <TextBlock 
-                            Padding="5"
                             Text="Add new user" 
                             TextWrapping="Wrap" 
                             TextAlignment="Center" />
                     </Button>
+
                     <Button
+                        HorizontalAlignment="Stretch"
                         Margin="0 5 0 5"
                         Command="{ Binding OnEditClicked }">
                         
                         <TextBlock
-                            Padding="5"
                             Text="Edit selected user" 
                             TextWrapping="Wrap" 
                             TextAlignment="Center"/>
                     </Button>
+                    
                     <Button
+                        HorizontalAlignment="Stretch"
                         Command="{ Binding OnDeleteClicked }">
                         
                         <TextBlock 
-                            Padding="5"
                             Text="Delete selected user"
                             TextWrapping="Wrap"
                             TextAlignment="Center"/>
