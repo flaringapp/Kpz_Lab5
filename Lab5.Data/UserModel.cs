@@ -17,7 +17,10 @@ namespace Lab5.Data
         [DataMember]
         public string Email { get; set; }
 
+        public UserType Type { get; set; }
+
         public UserModel() {
+
         }
 
         public UserModel(string id, string name, string surname, string email)
@@ -33,5 +36,11 @@ namespace Lab5.Data
             return $"User with {Id} - {Name} {Surname} - {Email}";
         }
 
+        [DataContract]
+        public enum UserType
+        {
+            User,
+            Manager
+        }
     }
 }

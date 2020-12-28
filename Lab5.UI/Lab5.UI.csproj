@@ -75,6 +75,7 @@
     <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Base\SimpleCommand.cs" />
+    <Compile Include="Converters\UserTypeImageConverter.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -109,12 +110,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\ic_remove.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lab5.Data\Lab5.Data.csproj">
       <Project>{E11C1F82-D07A-4968-BA9B-F9EEEF66AD37}</Project>
       <Name>Lab5.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\UserType\ic_Manager.png" />
+    <Resource Include="Images\UserType\ic_User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
