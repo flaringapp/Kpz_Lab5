@@ -3,29 +3,93 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Users" 
+        Height="450" Width="800"
+        MinWidth="500" MinHeight="250"
         Name="Root">
     
-    <DockPanel
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch"
-        Height="Auto">
-      
-        <DataGrid HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch" 
-                  DockPanel.Dock="Top"
-                  He
-                  AutoGenerateColumns="True"
-                  ItemsSource="{Binding Path = Users}"
-                  />
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding OnClosing}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
-        <Button 
-            Width="100"
-            Height="50"
-            DockPanel.Dock="Bottom">
-            Delete
-        </Button>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
 
-    </DockPanel>
+        <DataGrid 
+            Grid.Column="0"
+            AutoGenerateColumns="True"
+            IsReadOnly="True"
+            ItemsSource="{Binding Users}"
+            SelectedItem="{Binding SelectedUser}"/>
+
+        <Grid 
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            Margin="10"
+            MaxWidth="100">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock 
+                Grid.Row="0"
+                HorizontalAlignment="Center" 
+                FontSize="18" FontWeight="Bold">
+                User actions
+            </TextBlock>
+
+            <ScrollViewer 
+                Grid.Row="1"
+                HorizontalAlignment="Stretch"
+                VerticalScrollBarVisibility="Auto">
+
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+
+                    <Button
+                        Command="{ Binding OnAddClicked }">
+
+                        <TextBlock 
+                            Padding="5"
+                            Text="Add new user" 
+                            TextWrapping="Wrap" 
+                            TextAlignment="Center" />
+                    </Button>
+                    <Button
+                        Margin="0 5 0 5"
+                        Command="{ Binding OnEditClicked }">
+                        
+                        <TextBlock
+                            Padding="5"
+                            Text="Edit selected user" 
+                            TextWrapping="Wrap" 
+                            TextAlignment="Center"/>
+                    </Button>
+                    <Button
+                        Command="{ Binding OnDeleteClicked }">
+                        
+                        <TextBlock 
+                            Padding="5"
+                            Text="Delete selected user"
+                            TextWrapping="Wrap"
+                            TextAlignment="Center"/>
+                    </Button>
+
+                </StackPanel>
+
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
 </Window>

@@ -4,7 +4,10 @@ namespace Lab5.Data
 {
     [DataContract]
     public class UserModel
-    { 
+    {
+        [DataMember]
+        public string Id { get; private set; }
+
         [DataMember]
         public string Name { get; set; }
 
@@ -17,8 +20,9 @@ namespace Lab5.Data
         public UserModel() {
         }
 
-        public UserModel(string name, string surname, string email)
+        public UserModel(string id, string name, string surname, string email)
         {
+            Id = id;
             Name = name;
             Surname = surname;
             Email = email;
@@ -26,7 +30,7 @@ namespace Lab5.Data
 
         public override string ToString()
         {
-            return $"User {Name} {Surname} - {Email}";
+            return $"User with {Id} - {Name} {Surname} - {Email}";
         }
 
     }

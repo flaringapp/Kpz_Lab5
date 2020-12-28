@@ -10,5 +10,13 @@ namespace Lab5.Base
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private SimpleCommand _onClosing;
+        public SimpleCommand OnClosing
+        {
+            get => _onClosing ?? (_onClosing = new SimpleCommand(o => Release()));
+        }
+
+        protected virtual void Release() {}
     }
 }

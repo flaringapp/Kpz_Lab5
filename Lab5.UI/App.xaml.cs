@@ -1,5 +1,6 @@
 ﻿using Lab5.Data;
 using Lab5.Data.Mock;
+using Lab5.ViewModels;
 using System.Windows;
 
 namespace Lab5
@@ -9,29 +10,11 @@ namespace Lab5
     /// </summary>
     public partial class App : Application
     {
-        private DataModel _data;
-
         public App()
         {
-            _data = DataModel.Load();
-            if (_data.Users.Count == 0)
-            {
-                _data = DataMock.Mock();
-                _data.Save();
-            }
-            var window = new MainWindow { DataContext = _data  };
+            var viewModel = new UsersViewModel();
+            var window = new MainWindow { DataContext = viewModel };
             window.Show();
-        }
-
-        protected override void OnExit(ExitEventArgs args)
-        {
-            try
-            {
-                _data.Save();
-            } finally
-            {
-                base.OnExit(args);
-            }
         }
     }
 }

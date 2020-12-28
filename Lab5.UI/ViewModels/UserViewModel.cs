@@ -1,10 +1,13 @@
 ﻿using Lab5.Base;
+using Lab5.Data;
 
 namespace Lab5.ViewModels
 {
     class UserViewModel : BaseViewModel
     {
 
+        private readonly string _id;
+        
         private string _name;
         public string Name
         {
@@ -35,6 +38,14 @@ namespace Lab5.ViewModels
                 _email = value;
                 OnPropertyChanged("Email");
             }
+        }
+
+        public UserViewModel(UserModel user)
+        {
+            _id = user.Id;
+            _name = user.Name;
+            _surname = user.Surname;
+            _email = user.Email;
         }
     }
 }

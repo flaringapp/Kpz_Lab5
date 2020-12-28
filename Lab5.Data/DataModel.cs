@@ -8,7 +8,6 @@ namespace Lab5.Data
     [DataContract]
     public class DataModel
     {
-
         [DataMember]
         public List<UserModel> Users { get; set; }
 
