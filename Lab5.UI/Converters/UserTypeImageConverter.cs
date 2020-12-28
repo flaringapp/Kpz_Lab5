@@ -6,7 +6,7 @@ using static Lab5.Data.UserModel;
 
 namespace Lab5.Converters
 {
-    class UserTypeImageConverter : IValueConverter
+    public class UserTypeImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

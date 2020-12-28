@@ -1,6 +1,7 @@
 ﻿using Lab5.Base;
 using Lab5.Data;
 using Lab5.Data.Repository;
+using Lab5.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -71,12 +72,16 @@ namespace Lab5.ViewModels
 
         private void HandleAddClicked()
         {
-            // TODO open add screen
+            var viewModel = new EditUserViewModel();
+            var window = new EditUserWindow { DataContext = viewModel };
+            window.Show();
         }
 
         private void HandleEditClicked()
         {
-            // TODO open edit screen
+            var viewModel = new EditUserViewModel(SelectedUser);
+            var window = new EditUserWindow { DataContext = viewModel };
+            window.Show();
         }
 
         private void HandleDeleteClicked()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lab5.Data.Repository
 {
@@ -28,8 +29,14 @@ namespace Lab5.Data.Repository
 
         public void AddUser(UserModel user)
         {
+            var maxId = 1L;
+            if (_users.Count > 0)
+            {
+                maxId = _users.Max(u => u.Id);
+            }
+            user.Id = maxId + 1;
             _users.Add(user);
-            OnUsersUpdated?.Invoke(_users);
+            ProcessUsersUpdated();
         }
 
         public void UpdateUser(UserModel user)
@@ -39,23 +46,34 @@ namespace Lab5.Data.Repository
                 if (_users[i].Id == user.Id)
                 {
                     _users[i] = user;
-                    OnUsersUpdated?.Invoke(_users);
+                    ProcessUsersUpdated();
                     return;
                 }
             }
         }
 
-        public void DeleteUser(string id)
+        public void DeleteUser(long id)
         {
             for (int i = 0; i < _users.Count; i++)
             {
                 if (_users[i].Id == id)
                 {
                     _users.RemoveAt(i);
-                    OnUsersUpdated?.Invoke(_users);
+                    ProcessUsersUpdated();
                     return;
                 }
             }
+        }
+
+        private void ProcessUsersUpdated()
+        {
+            SaveUsers();
+            OnUsersUpdated?.Invoke(_users);
+        }
+
+        private void SaveUsers()
+        {
+            new DataModel { Users = _users }.Save();
         }
     }
 }

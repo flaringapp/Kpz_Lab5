@@ -14,7 +14,7 @@ namespace Lab5.Data.Repository
 
         void UpdateUser(UserModel user);
 
-        void DeleteUser(string id);
+        void DeleteUser(long id);
 
     }
 }

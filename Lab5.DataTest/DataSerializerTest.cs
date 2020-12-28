@@ -19,8 +19,8 @@ namespace Lab5.DataTest
             {
                 Users = new List<UserModel>
             {
-                new UserModel("1", "Name1", "Surname1", "email1@gmail.com"),
-                new UserModel("2", "Name2", "Surname2", "email2@gmail.com")
+                new UserModel(1, "Name1", "Surname1", "email1@gmail.com", UserModel.UserType.User),
+                new UserModel(2, "Name2", "Surname2", "email2@gmail.com", UserModel.UserType.Manager)
             }
             };
             DataSerializer.Serialize(FilePath, model);

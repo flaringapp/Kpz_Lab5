@@ -15,18 +15,13 @@ namespace Lab5.Base
         private SimpleCommand _onClosing;
         public SimpleCommand OnClosing
         {
-            get => _onClosing ?? (_onClosing = new SimpleCommand(o =>
-            {
-                Release();
-                if (o is Window)
-                {
-                    CloseWindow((Window)o);
-                }
-            }));
+            get => _onClosing ?? (_onClosing = new SimpleCommand(o => Release()));
         }
 
         protected virtual void Release() { }
 
-        protected virtual void CloseWindow(Window window) { }
+        protected void CloseWindow(object window) {
+            ((Window)window).Close();
+        }
     }
 }
