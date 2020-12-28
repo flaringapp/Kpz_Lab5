@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows;
 
 namespace Lab5.Base
 {
@@ -14,9 +15,18 @@ namespace Lab5.Base
         private SimpleCommand _onClosing;
         public SimpleCommand OnClosing
         {
-            get => _onClosing ?? (_onClosing = new SimpleCommand(o => Release()));
+            get => _onClosing ?? (_onClosing = new SimpleCommand(o =>
+            {
+                Release();
+                if (o is Window)
+                {
+                    CloseWindow((Window)o);
+                }
+            }));
         }
 
-        protected virtual void Release() {}
+        protected virtual void Release() { }
+
+        protected virtual void CloseWindow(Window window) { }
     }
 }
