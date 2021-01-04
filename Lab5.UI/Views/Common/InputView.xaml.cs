@@ -3,9 +3,6 @@ using System.Windows.Controls;
 
 namespace Lab5.Views.Common
 {
-    /// <summary>
-    /// Interaction logic for InputView.xaml
-    /// </summary>
     public partial class InputView : UserControl
     {
 

@@ -83,6 +83,7 @@
     <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Base\SimpleCommand.cs" />
+    <Compile Include="Converters\UserTypeNameConverter.cs" />
     <Compile Include="Converters\UserTypeImageConverter.cs" />
     <Compile Include="ViewModels\InputViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />

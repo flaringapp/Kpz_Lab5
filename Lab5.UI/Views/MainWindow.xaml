@@ -13,6 +13,7 @@
 
     <Window.Resources>
         <Converter:UserTypeImageConverter x:Key="my:UserTypeImageConverter" />
+        <Converter:UserTypeNameConverter x:Key="my:UserTypeNameConverter" />
     </Window.Resources>
     
     <i:Interaction.Triggers>
@@ -49,7 +50,7 @@
                     Header="Email" Binding="{Binding Email}" />
 
                 <DataGridTextColumn
-                    Header="Type" Binding="{Binding Type}" />
+                    Header="Type" Binding="{Binding Type, Converter={StaticResource my:UserTypeNameConverter}}" />
 
                 <DataGridTemplateColumn
                     Header="Type icon">
