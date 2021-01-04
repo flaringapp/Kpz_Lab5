@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Media.Imaging;
 using static Lab5.Data.UserModel;
 
 namespace Lab5.Converters
