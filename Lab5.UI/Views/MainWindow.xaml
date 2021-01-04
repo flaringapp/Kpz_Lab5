@@ -80,6 +80,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <TextBlock 
@@ -134,6 +135,36 @@
                 </StackPanel>
 
             </ScrollViewer>
+
+            <StackPanel 
+                Grid.Row="2"
+                HorizontalAlignment="Right">
+
+                <Rectangle 
+                    Name="AnimatedRect"
+                    Fill="#FFF4F4F5" 
+                    HorizontalAlignment="Left" 
+                    Height="10" 
+                    Stroke="Black" 
+                    Width="10">
+                    
+                    <Rectangle.Triggers>
+                        <EventTrigger RoutedEvent="Rectangle.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="AnimatedRect" 
+                                        Storyboard.TargetProperty="Opacity"
+                                        From="1.0" To="0.0" Duration="0:0:1" 
+                                        AutoReverse="True" RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+                </Rectangle>
+
+            </StackPanel>
+
         </Grid>
     </Grid>
 
